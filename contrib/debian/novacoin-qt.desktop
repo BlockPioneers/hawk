@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Hawk
+Comment=Hawk P2P Cryptocurrency
+Comment[fr]=Hawk, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Hawk, eşten eşe kriptografik sanal para birimi
+Exec=/usr/bin/Hawk-qt
+Terminal=false
+Type=Application
+Icon=/usr/share/pixmaps/bitcoin80.xpm
+MimeType=x-scheme-handler/Hawk;
+Categories=Office;

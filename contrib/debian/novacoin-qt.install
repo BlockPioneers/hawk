@@ -1,0 +1,5 @@
+Hawk-qt usr/bin
+share/pixmaps/bitcoin32.xpm usr/share/pixmaps
+share/pixmaps/bitcoin80.xpm usr/share/pixmaps
+debian/Hawk-qt.desktop usr/share/applications
+debian/Hawk-qt.protocol usr/share/kde4/services/

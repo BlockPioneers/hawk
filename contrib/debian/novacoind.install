@@ -1,0 +1,2 @@
+debian/bin/Hawkd usr/bin
+src/Hawkd usr/lib/Hawk
