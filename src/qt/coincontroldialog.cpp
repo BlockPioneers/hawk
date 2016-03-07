@@ -491,7 +491,9 @@ void CoinControlDialog::updateLabels(WalletModel *model, QDialog* dialog)
         int64_t nMinFee = txDummy.GetMinFee(1, GMF_SEND, nBytes);
         
         nPayFee = max(nFee, nMinFee);
-        
+       	if(pwalletMain->fSplitBlock)
+ 			nPayFee = 1 * COIN; // make the fee more expensive if using splitblock
+
         if (nPayAmount > 0)
         {
             nChange = nAmount - nPayFee - nPayAmount;
