@@ -244,6 +244,10 @@ void BitcoinGUI::createActions()
     quitAction->setToolTip(tr("Quit application"));
     quitAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
     quitAction->setMenuRole(QAction::QuitRole);
+	aboutHAWKAction = new QAction(QIcon(":/icons/website"), tr("&Hawk Website"), this);
+	aboutHAWKAction->setToolTip(tr("Visit the Official Hawk website"));
+	aboutCHAINAction = new QAction(QIcon(":/icons/website-explorer"), tr("&Hawk Blockchain Explorer"), this);
+	aboutCHAINAction->setToolTip(tr("Visit the Official Hawk Blockchain Explorer"));	
     aboutAction = new QAction(QIcon(":/icons/bitcoin"), tr("&About Hawk"), this);
     aboutAction->setToolTip(tr("Show information about Hawk"));
     aboutAction->setMenuRole(QAction::AboutRole);
@@ -274,6 +278,8 @@ void BitcoinGUI::createActions()
     openRPCConsoleAction->setToolTip(tr("Open debugging and diagnostic console"));
 
     connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
+	connect(aboutHAWKAction, SIGNAL(triggered()), this, SLOT(aboutHAWKClicked()));
+	connect(aboutCHAINAction, SIGNAL(triggered()), this, SLOT(aboutCHAINClicked()));		
     connect(aboutAction, SIGNAL(triggered()), this, SLOT(aboutClicked()));
     connect(aboutQtAction, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
     connect(optionsAction, SIGNAL(triggered()), this, SLOT(optionsClicked()));
@@ -319,6 +325,12 @@ void BitcoinGUI::createMenuBar()
     help->addSeparator();
     help->addAction(aboutAction);
     help->addAction(aboutQtAction);
+
+    QMenu *resources = appMenuBar->addMenu(tr("&Resources"));
+
+    resources->addAction(aboutHAWKAction);
+    resources->addAction(aboutCHAINAction);	
+    resources->addSeparator();
 }
 
 void BitcoinGUI::createToolBars()
@@ -466,6 +478,18 @@ void BitcoinGUI::optionsClicked()
     OptionsDialog dlg;
     dlg.setModel(clientModel->getOptionsModel());
     dlg.exec();
+}
+
+// HAWK WEBSITE URL
+void BitcoinGUI::aboutHAWKClicked()
+{
+    QDesktopServices::openUrl(QUrl("http://www.cryptohawk.pw/"));
+}
+
+// HAWK BLOCKCHAIN URL
+void BitcoinGUI::aboutCHAINClicked()
+{
+    QDesktopServices::openUrl(QUrl("http://blockchain.cryptohawk.pw/"));
 }
 
 void BitcoinGUI::aboutClicked()

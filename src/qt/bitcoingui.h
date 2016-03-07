@@ -96,6 +96,9 @@ private:
     QAction *lockWalletAction;
     QAction *aboutQtAction;
     QAction *openRPCConsoleAction;
+    /** Website actions. */
+	QAction *aboutHAWKAction;
+	QAction *aboutCHAINAction;		
 
     QSystemTrayIcon *trayIcon;
     Notificator *notificator;
@@ -158,8 +161,13 @@ private slots:
 
     /** Show configuration dialog */
     void optionsClicked();
+
     /** Show about dialog */
     void aboutClicked();
+	
+    /** Show Websites */	
+	void aboutHAWKClicked();	
+	void aboutCHAINClicked();	
 #ifndef Q_OS_MAC
     /** Handle tray icon clicked */
     void trayIconActivated(QSystemTrayIcon::ActivationReason reason);
