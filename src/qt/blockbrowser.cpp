@@ -51,8 +51,8 @@ const CBlockIndex* getBlockIndex(int height)
 
 std::string getBlockHash(int Height)
 {
-    if(Height > pindexBest->nHeight) { return "351c6703813172725c6d660aa539ee6a3d7a9fe784c87fae7f36582e3b797058"; }
-    if(Height < 0) { return "351c6703813172725c6d660aa539ee6a3d7a9fe784c87fae7f36582e3b797058"; }
+    if(Height > pindexBest->nHeight) { return "0x0000004df023b83548fa01d36399b81d534373dec06d4e18c04b6d2ff5f6a5e0"; }
+    if(Height < 0) { return "0x0000004df023b83548fa01d36399b81d534373dec06d4e18c04b6d2ff5f6a5e0"; }
     int desiredheight;
     desiredheight = Height;
     if (desiredheight < 0 || desiredheight > nBestHeight)
@@ -161,7 +161,7 @@ double getTxTotalValue(std::string txid)
     CTransaction tx;
     uint256 hashBlock = 0;
     if (!GetTransaction(hash, tx, hashBlock))
-        return 1000;
+        return 0;
 
     CDataStream ssTx(SER_NETWORK, PROTOCOL_VERSION);
     ssTx << tx;
@@ -192,7 +192,7 @@ std::string getOutputs(std::string txid)
     CTransaction tx;
     uint256 hashBlock = 0;
     if (!GetTransaction(hash, tx, hashBlock))
-        return "fail";
+        return "N/A";
 
     CDataStream ssTx(SER_NETWORK, PROTOCOL_VERSION);
     ssTx << tx;
@@ -225,7 +225,7 @@ std::string getInputs(std::string txid)
     CTransaction tx;
     uint256 hashBlock = 0;
     if (!GetTransaction(hash, tx, hashBlock))
-        return "fail";
+        return "N/A";
 
     CDataStream ssTx(SER_NETWORK, PROTOCOL_VERSION);
     ssTx << tx;
@@ -239,7 +239,7 @@ std::string getInputs(std::string txid)
         CTransaction wtxPrev;
         uint256 hashBlock = 0;
         if (!GetTransaction(hash, wtxPrev, hashBlock))
-             return "fail";
+             return "N/A";
 
         CDataStream ssTx(SER_NETWORK, PROTOCOL_VERSION);
         ssTx << wtxPrev;
@@ -283,7 +283,7 @@ double getTxFees(std::string txid)
     CTransaction tx;
     uint256 hashBlock = 0;
     if (!GetTransaction(hash, tx, hashBlock))
-        return 51;
+        return 0.000001;
 
     CDataStream ssTx(SER_NETWORK, PROTOCOL_VERSION);
     ssTx << tx;
@@ -350,17 +350,17 @@ void BlockBrowser::updateExplorer(bool block)
         ui->timeBox->show();
         ui->hardLabel->show();
         ui->hardBox->show();;
-        ui->pawLabel->show();
-        ui->pawBox->show();
+        //ui->pawLabel->show();
+        //ui->pawBox->show();
         int height = ui->heightBox->value();
         if (height > pindexBest->nHeight)
         {
             ui->heightBox->setValue(pindexBest->nHeight);
             height = pindexBest->nHeight;
         }
-        int Pawrate = getBlockHashrate(height);
-        double Pawrate2 = 0.000;
-        Pawrate2 = ((double)Pawrate / 1000);
+        //int Pawrate = getBlockHashrate(height);
+        //double Pawrate2 = 0.000;
+        //Pawrate2 = ((double)Pawrate / 1000000);
         std::string hash = getBlockHash(height);
         std::string merkle = getBlockMerkle(height);
         int nBits = getBlocknBits(height);
@@ -374,7 +374,7 @@ void BlockBrowser::updateExplorer(bool block)
         QString QNonce = QString::number(nNonce);
         QString QTime = QString::number(atime);
         QString QHardness = QString::number(hardness, 'f', 6);
-        QString QPawrate = QString::number(Pawrate2, 'f', 3);
+        //QString QPawrate = QString::number(Pawrate2, 'f', 3);
         ui->heightLabel->setText(QHeight);
         ui->hashBox->setText(QHash);
         ui->merkleBox->setText(QMerkle);
@@ -382,7 +382,7 @@ void BlockBrowser::updateExplorer(bool block)
         ui->nonceBox->setText(QNonce);
         ui->timeBox->setText(QTime);     
         ui->hardBox->setText(QHardness);
-        ui->pawBox->setText(QPawrate + " KH/s");
+        //ui->pawBox->setText(QPawrate + " MH/s");
     } 
     
     if(block == false) {
