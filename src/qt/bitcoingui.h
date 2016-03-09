@@ -101,8 +101,11 @@ private:
     QAction *openRPCConsoleAction;
 	QAction *blockAction;
     /** Website actions. */
-	QAction *aboutHAWKAction;
-	QAction *aboutCHAINAction;		
+	QAction *resourcesHAWKAction;
+	QAction *resourcesTWITTERAction;
+	QAction *resourcesCHAINAction;
+	QAction *resourcesCHAIN2Action;
+	QAction *resourcesFAUCETAction;	
 
     QSystemTrayIcon *trayIcon;
     Notificator *notificator;
@@ -173,8 +176,11 @@ private slots:
     void aboutClicked();
 	
     /** Show Websites */	
-	void aboutHAWKClicked();	
-	void aboutCHAINClicked();	
+	void resourcesHAWKClicked();	
+	void resourcesTWITTERClicked();	
+	void resourcesCHAINClicked();	
+	void resourcesCHAIN2Clicked();
+	void resourcesFAUCETClicked();	
 #ifndef Q_OS_MAC
     /** Handle tray icon clicked */
     void trayIconActivated(QSystemTrayIcon::ActivationReason reason);

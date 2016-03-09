@@ -2,7 +2,10 @@
     <qresource prefix="/icons">
         <file alias="bitcoin">res/icons/Hawk-80.png</file>
         <file alias="website">res/icons/web.png</file>
-        <file alias="website-explorer">res/icons/web-explorer.png</file>				
+        <file alias="website-twitter">res/icons/web-twitter.png</file>		
+        <file alias="website-explorer">res/icons/web-explorer.png</file>
+        <file alias="website-explorer2">res/icons/web-explorer2.png</file>
+        <file alias="website-faucet">res/icons/web-faucet.png</file>		
         <file alias="address-book">res/icons/address-book.png</file>
         <file alias="quit">res/icons/quit.png</file>
         <file alias="send">res/icons/send.png</file>

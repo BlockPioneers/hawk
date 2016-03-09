@@ -255,10 +255,16 @@ void BitcoinGUI::createActions()
     quitAction->setToolTip(tr("Quit application"));
     quitAction->setShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q));
     quitAction->setMenuRole(QAction::QuitRole);
-	aboutHAWKAction = new QAction(QIcon(":/icons/website"), tr("&Hawk Website"), this);
-	aboutHAWKAction->setToolTip(tr("Visit the Official Hawk website"));
-	aboutCHAINAction = new QAction(QIcon(":/icons/website-explorer"), tr("&Hawk Blockchain Explorer"), this);
-	aboutCHAINAction->setToolTip(tr("Visit the Official Hawk Blockchain Explorer"));	
+	resourcesHAWKAction = new QAction(QIcon(":/icons/website"), tr("&Hawk Website"), this);
+	resourcesHAWKAction->setToolTip(tr("Visit the Official Hawk website"));
+	resourcesTWITTERAction = new QAction(QIcon(":/icons/website-twitter"), tr("&Hawk Twitter"), this);
+	resourcesTWITTERAction->setToolTip(tr("Visit the Official Hawk Twitter"));
+	resourcesCHAINAction = new QAction(QIcon(":/icons/website-explorer"), tr("&Hawk Official Blockchain Explorer"), this);
+	resourcesCHAINAction->setToolTip(tr("Visit the Official Hawk Blockchain Explorer"));	
+	resourcesCHAIN2Action = new QAction(QIcon(":/icons/website-explorer2"), tr("&Hawk Blockchain Explorer - Blockpioneers"), this);
+	resourcesCHAIN2Action->setToolTip(tr("Visit the Blockpioneers Hawk Blockchain Explorer"));		
+	resourcesFAUCETAction = new QAction(QIcon(":/icons/website-faucet"), tr("&Hawk Faucet - Blockpioneers"), this);
+	resourcesFAUCETAction->setToolTip(tr("Visit the Blockpioneers Hawk Faucet"));		
     aboutAction = new QAction(QIcon(":/icons/bitcoin"), tr("&About Hawk"), this);
     aboutAction->setToolTip(tr("Show information about Hawk"));
     aboutAction->setMenuRole(QAction::AboutRole);
@@ -289,8 +295,11 @@ void BitcoinGUI::createActions()
     openRPCConsoleAction->setToolTip(tr("Open debugging and diagnostic console"));
 
     connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
-	connect(aboutHAWKAction, SIGNAL(triggered()), this, SLOT(aboutHAWKClicked()));
-	connect(aboutCHAINAction, SIGNAL(triggered()), this, SLOT(aboutCHAINClicked()));		
+	connect(resourcesHAWKAction, SIGNAL(triggered()), this, SLOT(resourcesHAWKClicked()));
+	connect(resourcesTWITTERAction, SIGNAL(triggered()), this, SLOT(resourcesTWITTERClicked()));	
+	connect(resourcesCHAINAction, SIGNAL(triggered()), this, SLOT(resourcesCHAINClicked()));
+	connect(resourcesCHAIN2Action, SIGNAL(triggered()), this, SLOT(resourcesCHAIN2Clicked()));
+	connect(resourcesFAUCETAction, SIGNAL(triggered()), this, SLOT(resourcesFAUCETClicked()));	
     connect(aboutAction, SIGNAL(triggered()), this, SLOT(aboutClicked()));
     connect(aboutQtAction, SIGNAL(triggered()), qApp, SLOT(aboutQt()));
     connect(optionsAction, SIGNAL(triggered()), this, SLOT(optionsClicked()));
@@ -339,8 +348,13 @@ void BitcoinGUI::createMenuBar()
 
     QMenu *resources = appMenuBar->addMenu(tr("&Resources"));
 
-    resources->addAction(aboutHAWKAction);
-    resources->addAction(aboutCHAINAction);	
+    resources->addAction(resourcesHAWKAction);
+    resources->addAction(resourcesTWITTERAction);
+    resources->addSeparator();	
+    resources->addAction(resourcesCHAINAction);
+    resources->addAction(resourcesCHAIN2Action);
+    resources->addSeparator();	
+    resources->addAction(resourcesFAUCETAction);		
     resources->addSeparator();
 }
 
@@ -493,15 +507,33 @@ void BitcoinGUI::optionsClicked()
 }
 
 // HAWK WEBSITE URL
-void BitcoinGUI::aboutHAWKClicked()
+void BitcoinGUI::resourcesHAWKClicked()
 {
     QDesktopServices::openUrl(QUrl("http://www.cryptohawk.pw/"));
 }
 
+// HAWK TWITTER URL
+void BitcoinGUI::resourcesTWITTERClicked()
+{
+    QDesktopServices::openUrl(QUrl("http://www.twitter.com/Crypto_Hawk/"));
+}
+
 // HAWK BLOCKCHAIN URL
-void BitcoinGUI::aboutCHAINClicked()
+void BitcoinGUI::resourcesCHAINClicked()
 {
     QDesktopServices::openUrl(QUrl("http://blockchain.cryptohawk.pw/"));
+}
+
+// HAWK BLOCKCHAIN2 URL
+void BitcoinGUI::resourcesCHAIN2Clicked()
+{
+    QDesktopServices::openUrl(QUrl("http://chain.blockpioneers.info/hawk/"));
+}
+
+// HAWK FAUCET URL
+void BitcoinGUI::resourcesFAUCETClicked()
+{
+    QDesktopServices::openUrl(QUrl("http://faucet.blockpioneers.info/hawk/"));
 }
 
 void BitcoinGUI::aboutClicked()
