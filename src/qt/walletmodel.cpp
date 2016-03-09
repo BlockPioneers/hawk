@@ -311,10 +311,15 @@ bool WalletModel::backupWallet(const QString &filename)
     return BackupWallet(*wallet, filename.toLocal8Bit().data());
 }
 
+void WalletModel::getStakeWeightFromValue(const int64_t& nTime, const int64_t& nValue, uint64_t& nWeight)
+{
+	wallet->GetStakeWeightFromValue(nTime, nValue, nWeight);
+}
+
 void WalletModel::setSplitBlock(bool fSplitBlock) 
-  { 
- 	wallet->fSplitBlock = fSplitBlock; 
-  } 
+{ 
+	wallet->fSplitBlock = fSplitBlock; 
+} 
    
  bool WalletModel::getSplitBlock() 
   { 

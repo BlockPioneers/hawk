@@ -97,7 +97,9 @@ public:
     // Wallet backup
     bool backupWallet(const QString &filename);
 	
-    void setSplitBlock(bool fSplitBlock); 
+    void getStakeWeightFromValue(const qint64& nTime, const qint64& nValue, quint64& nWeight);
+ 
+	void setSplitBlock(bool fSplitBlock); 
     bool getSplitBlock();	
 
     // RAI object for unlocking wallet, returned by requestUnlock()
