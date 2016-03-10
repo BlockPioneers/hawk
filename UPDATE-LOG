@@ -1,3 +1,25 @@
+10th of March 2016 - Version: 1.3.0.1
+________________________________
+
+Update version
+Fix version display
+Added extra seednodes
+Corrected "getmininginfo" outputs
+Added new checkpoint
+Added return change to coin control
+Added stake weight column to coin control
+Updated compatibility for miniupnpc 1.9
+Extra resources links
+Updated icons/splash/background
+Added blockchain explorer tab
+
+
+
+
+
+
+
+
 7th of March 2016 - Version: 1.2.0.1
 ________________________________
 
