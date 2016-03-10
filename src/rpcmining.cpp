@@ -34,28 +34,28 @@ Value getmininginfo(const Array& params, bool fHelp)
     pwalletMain->GetStakeWeight(*pwalletMain, nMinWeight, nMaxWeight, nWeight);
 
     Object obj, diff, weight;
-    obj.push_back(Pair("Blocks",        (int)nBestHeight));
-    obj.push_back(Pair("Current Block Size",(uint64_t)nLastBlockSize));
-    obj.push_back(Pair("Current Block Tx",(uint64_t)nLastBlockTx));
+    obj.push_back(Pair("blocks",        (int)nBestHeight));
+    obj.push_back(Pair("current block size",(uint64_t)nLastBlockSize));
+    obj.push_back(Pair("current block tx",(uint64_t)nLastBlockTx));
 
-    diff.push_back(Pair("Proof of Work",        GetDifficulty()));
-    diff.push_back(Pair("Proof of Stake",       GetDifficulty(GetLastBlockIndex(pindexBest, true))));
-    diff.push_back(Pair("Search Interval",      (int)nLastCoinStakeSearchInterval));
-    obj.push_back(Pair("Difficulty",    diff));
+    diff.push_back(Pair("proof of work",        GetDifficulty()));
+    diff.push_back(Pair("proof of stake",       GetDifficulty(GetLastBlockIndex(pindexBest, true))));
+    diff.push_back(Pair("search interval",      (int)nLastCoinStakeSearchInterval));
+    obj.push_back(Pair("difficulty",    diff));
 
-    obj.push_back(Pair("Block Value",    (uint64_t)GetProofOfWorkReward(0)));
-    obj.push_back(Pair("Net MH/s",     GetPoWMHashPS()));
-    obj.push_back(Pair("Net Stake Weight", GetPoSKernelPS()));
-    obj.push_back(Pair("Errors",        GetWarnings("statusbar")));
-    obj.push_back(Pair("Pooled Tx",      (uint64_t)mempool.size()));
+    obj.push_back(Pair("block value",    (uint64_t)GetProofOfWorkReward(0)));
+    obj.push_back(Pair("netmhashps",     GetPoWMHashPS()));
+    obj.push_back(Pair("netstakeweight", GetPoSKernelPS()));
+    obj.push_back(Pair("errors",        GetWarnings("statusbar")));
+    obj.push_back(Pair("pooled tx",      (uint64_t)mempool.size()));
 
-    weight.push_back(Pair("Minimum",    (uint64_t)nMinWeight));
-    weight.push_back(Pair("Maximum",    (uint64_t)nMaxWeight));
-    weight.push_back(Pair("Combined",  (uint64_t)nWeight));
-    obj.push_back(Pair("Stake Weight", weight));
+    weight.push_back(Pair("minimum",    (uint64_t)nMinWeight));
+    weight.push_back(Pair("maximum",    (uint64_t)nMaxWeight));
+    weight.push_back(Pair("combined",  (uint64_t)nWeight));
+    obj.push_back(Pair("stake weight", weight));
 
-    obj.push_back(Pair("Stake Interest",    (uint64_t)COIN_YEAR_REWARD));
-    obj.push_back(Pair("Testnet",       fTestNet));
+    obj.push_back(Pair("stake interest",    (uint64_t)COIN_YEAR_REWARD));
+    obj.push_back(Pair("testnet",       fTestNet));
     return obj;
 }
 
